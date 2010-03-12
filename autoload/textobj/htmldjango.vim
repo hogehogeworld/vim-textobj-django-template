@@ -21,88 +21,88 @@
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-fun textobj#htmldjango#select_a(type)
+function! textobj#htmldjango#select_a(type)
     let initpos = getpos(".")
 
-    let e =searchpairpos('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b')
-    if  ( e == [0,0])
+    let e = searchpairpos('{% *'.a:type.' .*%}', '', '{% *end'.a:type.' *%}', 'b')
+    if e == [0, 0]
         return 0
     endif
 
     let e = [bufnr("%")] + e + [0]
 
-    call setpos(".",initpos)
+    call setpos(".", initpos)
 
-    call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
+    call searchpair('{% *'.a:type.' .*%}', '', '{% *end'.a:type.' *%}', '')
 
-    norm f}
-    let b =  getpos(".")
+    normal f}
+    let b = getpos(".")
 
-    return ['v',b,e]
-endfun
+    return ['v', b, e]
+endfunction
 
-fun textobj#htmldjango#select_i(type)
+function! textobj#htmldjango#select_i(type)
     let initpos = getpos(".")
-    if  (searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
+    if searchpair('{% *'.a:type.' .*%}', '', '{% *end'.a:type.' *%}', 'b') == 0
         return 0
     endif
 
     normal f}
     "move one pesky char
     call search('.')
-    let e =getpos('.')
+    let e = getpos('.')
 
-    call setpos(".",initpos)
+    call setpos(".", initpos)
 
-    call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
+    call searchpair('{% *'.a:type.' .*%}', '', '{% *end'.a:type.' *%}', '')
 "        call search(".", 'b')
     let b = getpos(".")
 
     "move one pesky char
-    call search('.','b')
+    call search('.', 'b')
     let b = getpos('.')
-    return ['v',b,e]
-endfun
+    return ['v', b, e]
+endfunction
 
-fun textobj#htmldjango#select_block_a()
-   return  textobj#htmldjango#select_a('block')
-endfun
+function! textobj#htmldjango#select_block_a()
+   return textobj#htmldjango#select_a('block')
+endfunction
 
-fun textobj#htmldjango#select_if_a()
+function! textobj#htmldjango#select_if_a()
    return textobj#htmldjango#select_a('if\(equal\|notequal\|changed\|\)')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_with_a()
+function! textobj#htmldjango#select_with_a()
    return textobj#htmldjango#select_a('with')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_comment_a()
+function! textobj#htmldjango#select_comment_a()
    return textobj#htmldjango#select_a('comment')
-endfun
+endfunction
 
 
-fun textobj#htmldjango#select_for_a()
+function! textobj#htmldjango#select_for_a()
    return textobj#htmldjango#select_a('for')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_block_i()
+function! textobj#htmldjango#select_block_i()
    return textobj#htmldjango#select_i('block')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_if_i()
+function! textobj#htmldjango#select_if_i()
    return textobj#htmldjango#select_i('if\(equal\|notequal\|changed\|\)')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_with_i()
+function! textobj#htmldjango#select_with_i()
    return textobj#htmldjango#select_i('with')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_comment_i()
+function! textobj#htmldjango#select_comment_i()
    return textobj#htmldjango#select_i('comment')
-endfun
+endfunction
 
-fun textobj#htmldjango#select_for_i()
+function! textobj#htmldjango#select_for_i()
    return textobj#htmldjango#select_i('for')
-endfun
+endfunction
 
 " vim: foldmethod=marker
