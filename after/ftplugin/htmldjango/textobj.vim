@@ -1,4 +1,4 @@
-" textobj-django_template - Text objects for django templates
+" textobj-django-template - Text objects for django templates
 " Version: 0.2.0
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
