@@ -35,7 +35,7 @@ function! textobj#htmldjango#select_a(type)
 
     call searchpair('{% *'.a:type.' .*%}', '', '{% *end'.a:type.' *%}', '')
 
-    normal f}
+    normal! f}
     let b = getpos(".")
 
     return ['v', b, e]
@@ -47,7 +47,7 @@ function! textobj#htmldjango#select_i(type)
         return 0
     endif
 
-    normal f}
+    normal! f}
     "move one pesky char
     call search('.')
     let e = getpos('.')
