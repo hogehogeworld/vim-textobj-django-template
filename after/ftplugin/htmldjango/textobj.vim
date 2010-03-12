@@ -42,27 +42,27 @@ else
     finish
 endif
 
-call textobj#user#plugin('djangotemplate',{
-\   'block':{
-\       'select-a':'adb','*select-a-function*':'textobj#htmldjango#select_block_a',
-\       'select-i':'idb', '*select-i-function*':'textobj#htmldjango#select_block_i'
+call textobj#user#plugin('djangotemplate', {
+\   'block': {
+\       'select-a': 'adb', '*select-a-function*': 'textobj#htmldjango#select_block_a',
+\       'select-i': 'idb', '*select-i-function*': 'textobj#htmldjango#select_block_i'
 \   },
-\   'if':{
-\       'select-a':'adi','*select-a-function*':'textobj#htmldjango#select_if_a',
-\       'select-i':'idi', '*select-i-function*':'textobj#htmldjango#select_if_i'
+\   'if': {
+\       'select-a': 'adi', '*select-a-function*': 'textobj#htmldjango#select_if_a',
+\       'select-i': 'idi', '*select-i-function*': 'textobj#htmldjango#select_if_i'
 \   },
-\   'with':{
-\       'select-a':'adw','*select-a-function*':'textobj#htmldjango#select_with_a',
-\       'select-i':'idw', '*select-i-function*':'textobj#htmldjango#select_with_i'
+\   'with': {
+\       'select-a': 'adw', '*select-a-function*': 'textobj#htmldjango#select_with_a',
+\       'select-i': 'idw', '*select-i-function*': 'textobj#htmldjango#select_with_i'
 \   },
-\   'comment':{
-\       'select-a':'adc','*select-a-function*':'textobj#htmldjango#select_comment_a',
-\       'select-i':'idc', '*select-i-function*':'textobj#htmldjango#select_comment_i'
+\   'comment': {
+\       'select-a': 'adc', '*select-a-function*': 'textobj#htmldjango#select_comment_a',
+\       'select-i': 'idc', '*select-i-function*': 'textobj#htmldjango#select_comment_i'
 \   },
-\   'for':{
-\       'select-a':'adf','*select-a-function*':'textobj#htmldjango#select_for_a',
-\       'select-i':'idf', '*select-i-function*':'textobj#htmldjango#select_for_i'
+\   'for': {
+\       'select-a': 'adf', '*select-a-function*': 'textobj#htmldjango#select_for_a',
+\       'select-i': 'idf', '*select-i-function*': 'textobj#htmldjango#select_for_i'
 \   },
-\})
+\ })
 
 " vim: foldmethod=marker
