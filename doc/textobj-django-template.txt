@@ -23,3 +23,9 @@ Installation:
   This file should be in your after/ftplugin for django_template
 
   ~/.vim/after/ftplugin/django_template/template_textobjects.vim
+
+
+TODO:
+- Refine the document.
+- Unify file names, etc.
+- b:undo_ftplugin.
