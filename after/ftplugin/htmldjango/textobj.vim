@@ -43,7 +43,7 @@
 "
 "   ~/.vim/after/ftplugin/django_template/template_textobjects.vim
 "
-" }}
+" }}}
 
 if exists("loaded_matchit")
     let b:match_ignorecase = 1
@@ -183,3 +183,5 @@ call textobj#user#plugin('djangotemplate',{
 \       'select-i':'idf', '*select-i-function*':'s:select_for_i'
 \   },
 \})
+
+" vim: foldmethod=marker
