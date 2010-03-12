@@ -66,7 +66,7 @@ else
     finish
 endif
 
-if !exists('*g:textobj_function_django_template')
+if !exists('s:loaded_p')
 
     fun s:select_a(type)
         let initpos = getpos(".")
@@ -111,10 +111,6 @@ if !exists('*g:textobj_function_django_template')
         return ['v',b,e]
     endfun
 
-    fun! g:textobj_function_django_template(block_type,object_type)
-        return s:select_{a:block_type}_{a:object_type}()
-    endfun
-
     fun s:select_block_a()
        return  s:select_a('block')
     endfun
@@ -155,6 +151,8 @@ if !exists('*g:textobj_function_django_template')
     fun s:select_for_i()
        return s:select_i('for')
     endfun
+
+    let s:loaded_p = 1
 
 endif
 
