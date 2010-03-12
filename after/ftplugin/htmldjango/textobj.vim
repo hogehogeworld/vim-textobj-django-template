@@ -42,121 +42,26 @@ else
     finish
 endif
 
-if !exists('s:loaded_p')
-
-    fun s:select_a(type)
-        let initpos = getpos(".")
-
-        let e =searchpairpos('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b')
-        if  ( e == [0,0])
-            return 0
-        endif
-
-        let e = [bufnr("%")] + e + [0]
-
-        call setpos(".",initpos)
-
-        call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
-
-        norm f}
-        let b =  getpos(".")
-
-        return ['v',b,e]
-    endfun
-
-    fun s:select_i(type)
-        let initpos = getpos(".")
-        if  (searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
-            return 0
-        endif
-
-        normal f}
-        "move one pesky char
-        call search('.')
-        let e =getpos('.')
-
-        call setpos(".",initpos)
-
-        call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
-"        call search(".", 'b')
-        let b = getpos(".")
-
-        "move one pesky char
-        call search('.','b')
-        let b = getpos('.')
-        return ['v',b,e]
-    endfun
-
-    fun s:select_block_a()
-       return  s:select_a('block')
-    endfun
-
-    fun s:select_if_a()
-       return s:select_a('if\(equal\|notequal\|changed\|\)')
-    endfun
-
-    fun s:select_with_a()
-       return s:select_a('with')
-    endfun
-
-    fun s:select_comment_a()
-       return s:select_a('comment')
-    endfun
-
-
-    fun s:select_for_a()
-       return s:select_a('for')
-    endfun
-
-    fun s:select_block_i()
-       return s:select_i('block')
-    endfun
-
-    fun s:select_if_i()
-       return s:select_i('if\(equal\|notequal\|changed\|\)')
-    endfun
-
-    fun s:select_with_i()
-       return s:select_i('with')
-    endfun
-
-    fun s:select_comment_i()
-       return s:select_i('comment')
-    endfun
-
-    fun s:select_for_i()
-       return s:select_i('for')
-    endfun
-
-    let s:loaded_p = 1
-
-endif
-
 call textobj#user#plugin('djangotemplate',{
 \   'block':{
-\       '*sfile*': expand('<sfile>:p'),
-\       'select-a':'adb','*select-a-function*':'s:select_block_a',
-\       'select-i':'idb', '*select-i-function*':'s:select_block_i'
+\       'select-a':'adb','*select-a-function*':'textobj#htmldjango#select_block_a',
+\       'select-i':'idb', '*select-i-function*':'textobj#htmldjango#select_block_i'
 \   },
 \   'if':{
-\       '*sfile*': expand('<sfile>:p'),
-\       'select-a':'adi','*select-a-function*':'s:select_if_a',
-\       'select-i':'idi', '*select-i-function*':'s:select_if_i'
+\       'select-a':'adi','*select-a-function*':'textobj#htmldjango#select_if_a',
+\       'select-i':'idi', '*select-i-function*':'textobj#htmldjango#select_if_i'
 \   },
 \   'with':{
-\       '*sfile*': expand('<sfile>:p'),
-\       'select-a':'adw','*select-a-function*':'s:select_with_a',
-\       'select-i':'idw', '*select-i-function*':'s:select_with_i'
+\       'select-a':'adw','*select-a-function*':'textobj#htmldjango#select_with_a',
+\       'select-i':'idw', '*select-i-function*':'textobj#htmldjango#select_with_i'
 \   },
 \   'comment':{
-\       '*sfile*': expand('<sfile>:p'),
-\       'select-a':'adc','*select-a-function*':'s:select_comment_a',
-\       'select-i':'idc', '*select-i-function*':'s:select_comment_i'
+\       'select-a':'adc','*select-a-function*':'textobj#htmldjango#select_comment_a',
+\       'select-i':'idc', '*select-i-function*':'textobj#htmldjango#select_comment_i'
 \   },
 \   'for':{
-\       '*sfile*': expand('<sfile>:p'),
-\       'select-a':'adf','*select-a-function*':'s:select_for_a',
-\       'select-i':'idf', '*select-i-function*':'s:select_for_i'
+\       'select-a':'adf','*select-a-function*':'textobj#htmldjango#select_for_a',
+\       'select-i':'idf', '*select-i-function*':'textobj#htmldjango#select_for_i'
 \   },
 \})
 
